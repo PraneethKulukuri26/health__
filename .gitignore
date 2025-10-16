@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+myenv/
+env/
+venv/
+\.venv/
+
+# VS Code
+/.vscode/
+
+# ChromaDB and local DB files
+rag_db/
+*.sqlite3
+
+# Uploads and user data
+uploads/
+*.jsonl
+
+# Logs
+logs/
+*.log
+
+# Pytest cache
+.pytest_cache/
+
+# Sensitive files
+.env
+*.pem
+*.key
+
+rag_pipeline.py
