@@ -3,6 +3,14 @@ import json
 from sentence_transformers import SentenceTransformer
 import chromadb
 import google.generativeai as genai
+from dotenv import load_dotenv
+import torch
+
+device="cuda" if torch.cuda.is_available() else "cpu"
+print("Using device:", device)
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Config
 DB_PATH = os.environ.get("RAG_DB_PATH", "rag_db")
@@ -15,7 +23,7 @@ client = chromadb.PersistentClient(path=DB_PATH)
 collection = client.get_or_create_collection(COLLECTION_NAME)
 
 # Embedding model
-embedder = SentenceTransformer(os.environ.get("EMBED_MODEL", "all-MiniLM-L6-v2"))
+embedder = SentenceTransformer(os.environ.get("EMBED_MODEL", "all-MiniLM-L6-v2"),device=device)
 
 # Gemini model setup
 API_KEY = os.environ.get("GENAI_API_KEY")

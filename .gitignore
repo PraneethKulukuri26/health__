@@ -33,3 +33,4 @@ logs/
 *.key
 
 rag_pipeline.py
+commands.txt
